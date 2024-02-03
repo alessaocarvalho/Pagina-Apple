@@ -2,27 +2,27 @@ const imagemVisualizacao = document.getElementById('imagem-visualizacao');
 const tituloProduto = document.getElementById('titulo-produto');
 
 const verdeCispreste = {
-    nome: 'Verde-cipreste',
+    nome: 'verde-cipreste',
     pasta: 'imagens-verde-cipreste'
 }
 
 const azulInverno = {
-    nome: 'Azul-inverno',
+    nome: 'azul-inverno',
     pasta: 'imagens-azul-inverno'
 }
 
 const meiaNoite = {
-    nome: 'Meia-noite',
+    nome: 'meia-noite',
     pasta: 'imagens-meia-noite'
 }
 
 const estelar = {
-    nome: 'Estelar',
+    nome: 'estelar',
     pasta: 'imagens-estelar'
 }
 
 const rosaClaro = {
-    nome: 'Rosa-claro',
+    nome: 'rosa-claro',
     pasta: 'imagens-rosa-claro'
 }
 
@@ -41,6 +41,7 @@ const opcoesTamanho = [
 
 let imagemSelecionada = 1;
 let tamanhoSelecionado = 1;
+let corSelecionada = 1;
 
 function trocarImagem() {
     const idOpcaoSelecionada = document.querySelector('[name="opcao-imagem"]:checked').id;
@@ -51,11 +52,17 @@ function trocarImagem() {
 function trocarTamanho() {
     const idOpcaoSelecionada = document.querySelector('[name="opcao-tamanho"]:checked').id;
     tamanhoSelecionado = idOpcaoSelecionada.charAt(0);
-    tituloProduto.innerText = 'Pulseira loop esportiva azul-inverno para caixa de ' + opcoesTamanho[tamanhoSelecionado];
+    tituloProduto.innerText = 'Pulseira loop esportiva ' + opcoesCores[corSelecionada].nome + ' para caixa de ' + opcoesTamanho[tamanhoSelecionado];
     if (opcoesTamanho[tamanhoSelecionado] === '41 mm') {
         imagemVisualizacao.classList.add('caixa-pequena');
     }
     else {
         imagemVisualizacao.classList.remove('caixa-pequena');
     }
+}
+
+function trocarCor() {
+    const idOpcaoSelecionada = document.querySelector('[name="opcao-cor"]:checked').id;
+    corSelecionada = idOpcaoSelecionada.charAt(0);
+    tituloProduto.innerText = 'Pulseira loop esportiva ' + opcoesCores[corSelecionada].nome + ' para caixa de ' + opcoesTamanho[tamanhoSelecionado];
 }
